@@ -1,0 +1,268 @@
+.ui-body-c,.ui-dialog.ui-overlay-c{
+    text-shadow: 0pt 0px 0pt rgb(0, 0, 0); 
+}
+.ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button{
+        font-family: 'Source Sans Pro', sans-serif !important;
+        text-shadow: none;
+        color:black;
+}
+
+body { 
+	font-family: 'Source Sans Pro', sans-serif !important;
+	background-color: gray;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 1.2em;
+}
+
+.centered {
+	text-align: center;
+}
+
+#searchBox {
+	width: 90%;
+	display: block;
+}
+
+#submitQuery {
+
+}
+
+input {
+	display: inline;
+}
+
+.hintText {
+	font-size: .8em;
+}
+
+#logo {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid black;	
+	font-size: 1.1em;
+}
+
+#loginForm {
+	margin-top: 25px;
+}
+
+input.big {
+	height: 30px;
+	font-size: 1.2em;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.bigButton {
+	width: 80%;
+	height: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.2em;
+}
+
+#signUp {
+	margin-top: 30px;
+	
+}
+
+input.withHint {
+	color: #DCDADD;
+	font-style: italic;
+}
+
+#submit {
+	background-color: #009927;
+	color: white;
+}
+
+#searchContainer {
+	margin-top: 100px;
+}
+
+button#executeSearch {
+	margin-top: 30px;
+	background-color: #009927;
+	color: white;
+}
+
+.searchLocation {
+	margin-top: 10px;
+	height: 30px;
+}
+
+#searchLocationInput{
+	display: none;
+}
+
+#locationContainer {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	height: 115px;
+}
+
+.locationImage {
+	height: 95px;
+	border: 1px solid black;
+	width: 95px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.locationData {
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	height: 150px;
+	width: 60%;
+}
+
+span.locationData>h1 {
+	font-size: 1em;
+	margin-top: 0;
+	margin-bottom: .1em;
+}
+
+span.locationData h2 {
+	font-size: .8em;
+	margin-top: .2em;
+	margin-bottom: .2em;
+	font-weight: normal;
+	color: #A2A2A2;
+	text-transform: uppercase;
+}
+
+span.locationPhoneType {
+	float: left;
+	clear: both;
+	display: block;
+
+}
+
+span.locationPhoneType h2 {
+	display: block;
+	margin-right: 10px;
+}
+
+span.locationDistance {
+	height: 20px;
+	padding: 5px;
+	color: white;
+	background-color: #B5C6F4;
+	margin-right: 0px;
+	float: right;
+	clear: both;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
+#commentContainer {
+	width: 85%;
+	background-color: white;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 5%;
+}
+
+.floatRight {
+	float: right;
+}
+
+#myPlacesHeader>h1 {
+	float: left;
+}
+
+#myPlacesHeader {
+	padding: 10px;
+	height: 50px;
+}
+
+.distance {
+	font-size: .8em;
+	font-weight: normal;
+	color: #9F9F9F;
+	height: 40px;
+	text-align: right;
+	float: right;
+	margin-right: 20px;
+}
+
+.pac-item {
+	height: 40px;
+	padding-top:20px;
+}
+
+/*My Places List Styles*/
+
+.listingName {
+	font-size: 1.8em;
+	padding-left: 9%;
+	font-weight: 400;
+	color: #1b85b9;
+	display: block;
+}
+
+.listingDetail {
+	padding-left: 9%;
+	font-size: .7em;
+	font-weight: 200;
+	margin-top:10.6%;
+	display: block;
+}
+
+.locationDivider {
+	margin-top: 0px;
+	height: 5%;
+	background-image:url('../img/sorting_label_dot.jpg');
+	background-repeat: repeat;
+	padding-left: 5%;
+	color: rgb(135,135,135);
+	font-size: .8em;
+	line-height: 4%;
+}
+
+li.placeListItem {
+	min-height: 10.5%;
+	background-color: white;
+	border-top: 2px solid rgb(236,236,236);
+	padding-top: 4%;
+	padding-bottom: 3.5%;
+	text-decoration: none;
+}
+
+.recommendedBy {
+	margin-top:2%;
+	height: 5.2%;
+	background-color: #1b85b9;
+	line-height: 5.2%;
+	color: white;
+	width: auto;
+	display: inline-block;
+	background-image: url('../img/recommendedByFlag.jpg');
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+	font-size: .6em;
+}
+
+.recommendedByName {
+	padding-left: 9%;
+	font-weight: 300;
+}

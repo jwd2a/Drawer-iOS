@@ -1,0 +1,505 @@
+<!-- THIS IS THE HUB VERSION-->
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Drawer</title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;" /> 
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/css_reset.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.2.0_noTheme.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/base_styles.css" />
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'/>
+        
+        <script type="text/javascript">
+        window.onerror = function(message, url, lineNumber) {
+        console.log("Error: "+message+" in "+url+" at line "+lineNumber);
+        }
+        </script>
+	
+	
+	<!--<script src="js/templates.js"></script>	-->
+	<script type="text/javascript" src="js/libs/energize.js"></script>	
+
+	<script type="text/template" id="login-template">
+		<div id="fb-root"></div>
+		<div id="loginContainer">
+			<div id="radialGrad">
+
+				<div id="loginLogo">
+					<img src="img/login_logo_vert.png" alt="Login Logo Vert">
+				</div>
+
+
+				<button data-role="none" id="signInWithFacebookBtn">Sign in with Facebook</button>
+				<button data-role="none" id="goNativeLogin">I'd rather not use Facebook</button>
+			</div>	
+		</div>
+	</script>
+	
+	<script type="text/template" id="loginFBOnly-template">
+		<div id="fb-root"></div>
+		<div id="loginContainer">
+			<div id="radialGrad">
+
+				<div id="loginLogo">
+					<img src="img/login_logo_vert.png" alt="Login Logo Vert"/>
+				</div>
+
+
+				<button data-role="none" id="signInWithFacebookBtn">Sign in with Facebook</button>
+
+			</div>	
+		</div>
+	</script>
+	
+	<script type="text/template" id="nativeLogin-template">
+	<div id="fb-root"></div>
+	<div id="loginContainer">
+		<div id="radialGrad">
+
+			<div id="loginLogo">
+				<img src="img/login_logo_vert.png" alt="Login Logo Vert"/>
+			</div>
+
+			<form id="loginNative">
+				<input type="text" style="loginInput" value="Email Address" class="withHint" id="regEmail"/>
+				<input type="text" style="loginInput" value="Password" class="withHint" id="regPass"/>
+					<div id="showPass">
+						<img src="img/checkbox_checked.png" id="showPassChk"/>Show password
+					</div>
+				<input type="submit" data-role="none" class="styledSubmit" value="Sign In" id="registerNativeSubmit"/>
+				<div id="acctExists">
+					I need to register
+				</div>
+			</form>
+		</div>	
+	</div>
+	</script>
+	
+	<script type="text/template" id="register-template">
+		<div id="fb-root"></div>
+		<div id="loginContainer">
+			<div id="radialGrad">
+
+				<div id="loginLogo">
+					<img src="img/login_logo_vert.png" alt="Login Logo Vert">
+				</div>
+				
+				<div id="signInError">
+					Oops, that email address is already taken. Perhaps you <a href="#forgotPassword">forgot your password?</a>
+				</div>
+
+				<form id="registerNative">
+					<input type="text" style="loginInput" value="Enter an email address" class="withHint" id="regEmail"/>
+					<input type="text" style="loginInput" value="Choose a password" class="withHint" id="regPass"/>
+						<div id="showPass">
+							<img src="img/checkbox_checked.png" id="showPassChk"/>Show password
+						</div>
+					<input type="submit" data-role="none" class="styledSubmit" value="Create your account" id="registerNativeSubmit"/>
+					<div id="acctExists">
+						<a href="#nativeLogin">I already have an account</a>
+					</div>
+				</form>
+			</div>	
+		</div>
+	</script>
+
+	<script type="text/template" id="myLocationDetail-template">
+	
+	<div id="header">
+		<div class="btnLeft back"></div>
+		<div class="btnRight edit"></div>
+		<div id="logo"></div>
+	</div>
+	
+	<div class="clearHeader"></div>
+	
+	<div id="content">
+	
+		<div id="placePhoto">
+			
+			<div id="placeTitleBlock">
+				<div class="placeTitle"><%= name %></div>
+				<div class="placeCategory"><%= categories[0].name %></div>
+			</div>
+			
+			<img src='' alt='' id='placeImg' />
+		
+		</div>
+		
+		<div id="placeBottom">
+			
+			<div id="placeDetails">
+				
+				<div id="placeDetailsAddress" class="placeDetailComponent">
+					<span class="placeDetailsComponentText">
+					<a href="http://maps.google.com/maps?q=<%=location.address %> <%=location.city%> <%=location.state%> <%=location.postalcode%>">
+						<span class="line1"><%= location.address %></span>
+						<span class="line2"><%= location.city %>, <%= location.state %></span>
+					</a>
+					</span>
+				</div> <!--end placeDetailsAddress -->
+			
+				<div id="placeDetailsPhone" class="placeDetailComponent">
+					<span class="placeDetailsComponentText"><%= contact.formattedPhone %></span>
+				</div> <!--end #placeDetailsPhone-->
+			
+				<div id="placeDetailsWeb" class="placeDetailComponent">
+					<span class="placeDetailsComponentText"><%= url %></span>
+				</div> <!--end #placeDetailsWeb -->
+				
+			</div><!--end #placeDetails -->
+		
+			<div class="recommendedBy">
+				Recommended by <%= referrer %>
+			</div> <!--end #recommendedBy -->
+		
+			<div id="placeNotes">
+				<%= notes %>
+			</div> <!--end #placeNotes -->
+		
+			<div id="placeFooter">
+				<button data-role="none" class="locationDetailBtn" id="triedPlace">Tried it!</button>
+				<button data-role="none" class="locationDetailBtn" id="removePlace">Remove this place</button>
+                <button data-role="none" class="locationDetailBtn" id="notifyMe">Notify Me When Nearby</button>
+			</div>
+			
+	</div><!--end #placeBottom-->
+	</div> <!--end #content -->
+	</script>
+	
+	<script type="text/template" id="myPlaces-template">
+		<div id="header">
+			<div class="btnLeft settings"></div>
+			<div class="btnRight add"></div>
+			<div id="logo"></div>
+		</div>
+		
+		<div id="listSort">
+			<div id="sortControlContainer">
+				<button data-role="none" class="sortControl sortDistance <%= (window.collection.sortMode == 'distance') ? 'sortActive' : 'sortInactive' %>">By Distance</button>
+				<button data-role="none" class="sortControl sortCity <%= (window.collection.sortMode == 'city') ? 'sortActive' : 'sortInactive' %>">By City</button>
+			</div>
+		</div>
+		
+		<div id="confirmationMessage"><span class="message"></span></div>
+			
+		<div id="content">
+			<div id="myPlacesList">
+				<ul id="placeList">
+				<img src="img/loading_<%= (window.collection.sortMode == 'distance') ? 'location' : 'sorting' %>.gif" id="ajaxLoader" alt="Loading...">
+				</ul>
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/template" id="addItem-template">
+	
+		<div id="header">
+			<div class="btnLeft back"></div>
+			<div id="logo"></div>
+		</div>
+		<div class="clearHeader"></div>
+		<div id="content">
+
+			<div id="placeInfo">
+				<img id="addPlaceImage" src="img/loading_icon_only.gif" />
+				<div id="placeInfoDetails">
+		 			<span class="placeName"><%= name %></span>
+					<a href="http://maps.google.com/maps?q=<%=location.address %> <%=location.city%> <%=location.state%> <%=location.postalcode%>">
+		 			<span class="placeDetails address line1"><%= location.address %></span> 
+					<span class="placeDetails city line2"><%= location.city %>, <%= location.state %> <%= location.postalCode %></span>
+					</a>
+					<span class="placeDetails category line1"><%= categories[0].name %></span>
+				</div>
+			</div>
+			
+			<div id="placeFeedback">
+				<form id="recommendedPlaceFeedback">
+					<label for="recommendedBy">Who recommended this?</label>
+					<input type="text" data-role="none" name="recommendedBy" id="recommendedBy" value="<%=referrer%>">
+
+					<label for="notes">Anything to remember about it?</label>
+					<textarea name="notes" data-role="none" id="notes" ><%=notes%></textarea>
+
+					<input type="submit" class="styledSubmit" data-role="none" value="SAVE TO MY LIST"/>
+				</form>
+			</div>	
+		</div>
+	</script>
+	
+	<script type="text/template" id="findPlace-template">
+		<div id="header">
+		<div class="btnLeft cancel"></div>
+		Save Recommendation
+		<div class="btnRight blank"></div>
+		</div>
+		
+		<div id="content">
+			<div class="clearHeader"></div>
+			<div id="findContainer">
+				<form id="searchBar">
+					<input type="text" name="search" id="searchBox" value="What's the place?"></input>
+					<input type="text" name="location" id="location"></input>
+					<input type="submit" id="searchSubmit" class="styledSubmit" data-role="none" value="FIND IT"/>
+				</form>
+			</div>
+			<div id="resultsContainer">
+				<ul data-role="listview" id="resultsList"></ul>
+			</div>
+
+		</div> <!--end content -->
+	</script>
+	
+	<script type="text/template" id="settings-template">
+		<div id="header">
+			<div class="btnLeft back"></div>
+			<div id="logo"></div>
+		</div>
+		<div class="clearHeader grayBG"></div>
+		<div id="content">
+			<a href="#triedPlaces" data-role="none">
+				<div class="settingsBox single">
+					Places I've Tried<div class='dblArrow arrowCentered'><img src='img/dbl_arrow.png' alt='View this place' /></div>
+					</div>
+			</a>
+
+			<div class="settingsBox top">
+				Rate Us!<div class='dblArrow arrowCentered'><img src='img/dbl_arrow.png' alt='View this place' /></div>
+			</div>
+			
+			<a href="#feedback" data-role="none">
+				<div class="settingsBox bottom">
+					Feedback & Support<div class='dblArrow arrowCentered'><img src='img/dbl_arrow.png' alt='View this place' /></div>
+				</div>
+			</a>
+			
+			<a href="#staticContentPage/about" data-role="none">
+				<div class="settingsBox top">
+					About Drawer<div class='dblArrow arrowCentered'><img src='img/dbl_arrow.png' /></div>
+				</div>
+			</a>
+			<a href="#staticContentPage/TOS" data-role="none">
+				<div class="settingsBox bottom">
+					Terms of Service<div class='dblArrow arrowCentered'><img src='img/dbl_arrow.png' /></div>
+				</div>
+			</a>
+        
+            <button data-role="none" class="styledSubmit" id="globalNotifyToggle">Enable Notifications</button>
+			
+			<input type="submit" id="logOut" class="styledSubmit" data-role="none" value="Log Out"/>
+
+		</div> <!--end content -->
+	</script>
+	
+	<script type="text/template" id="aboutDrawer-template">
+		<div id="header">
+			<div class="btnLeft back"></div>
+			About Drawer
+			<div class="btnRight blank"></div>
+		</div>
+		<div class="clearHeader"></div>			
+		<div id="content" class="padForText">
+			<h1>We had a problem.</h1>
+			<p>We were tired of forgetting places that our friends recommended. Sure, you can make a note on your phone, but how would you remember to look there? Or, add it to your to-do list in Foursquare - but, what if you don't use Foursquare, or want to tag your friends in the note? Simply put - there wasn't a solution.</p>
+			
+			<p>Until now.</p>
+			
+			<p>We built drawer because we trust our friends and want to make good on the places our friends recommend to us. We hope you do too.</p>
+			
+			<p>Drawer was conceived of, designed and built by <a href="http://www.maderalabs.com">Madera Labs</a>, a user experience strategy and design company based in sunny Tampa, FL.</p>
+			
+		</div>
+	</script>
+	
+	<script type="text/template" id="TOS-template">
+		<div id="header">
+			<div class="btnLeft back"></div>
+			Terms of Service
+			<div class="btnRight blank"></div>
+		</div>
+		<div class="clearHeader"></div>			
+		<div id="content" class="padForText">
+			<h1>Terms of Service</h1>
+			<p>Terms of Service go here. MAN, they're exciting to read!</p>
+		</div>
+	</script>
+	
+	<script type="text/template" id="feedback-template">
+		<a href="#confirmModal" id="launchModal"></a>
+		<div id="confirmModal">
+			<img src="img/mail88.png" alt="Mail88"/>
+			<h1 style='font-size:3.475em;'>Your message is on its way</h1>
+			<h3>Thanks for getting in touch, we appreciate the message. We're working hard to make Drawer even better!</h3>
+			<input type='submit' class='styledSubmit' id='closeConfirmModal' data-role="none"  value='Got it!'/>
+		</div>
+		<div id="header">
+			<div class="btnLeft back"></div>
+			Feedback and Support
+			<div class="btnRight blank"></div>
+		</div>
+		<div class="clearHeader"></div>			
+		<div id="content" class="padForText">
+			<p>Whether you have problems or praise, we want to hear from you! Send us a message to let us know what's on your mind</p>
+			<form id="feedbackForm">
+				<select data-role="none" name="reasonForMessage" id="reasonForMessage">
+					<option value="I Love Drawer!">I Love Drawer!</option>
+					<option value="Feature idea">I have an awesome suggestion!</option>
+					<option value="Question">How do I...</option>
+					<option value="Bug">Um, my app is broken...</option>
+				</select>
+				
+				<textarea id="messageText"></textarea>
+				<input type="submit" id="submitFeedback" class="styledSubmit" data-role="none" value="SEND IT!"/>
+			</form>
+		</div>
+	</script>
+	
+	<script type="text/template" id="triedPlaces-template">
+		<div id="header">
+			<div class="btnLeft back"></div>
+			Places I've Tried
+			<div class="btnRight blank"></div>
+		</div>
+		<div class="clearHeader"></div>			
+		<div id="content">
+			<table id="triedList"></table>
+		</div>
+	</script>
+        
+    <script type="text/javascript" src="../cordova-2.3.0.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/libs/json2.js"></script>
+	<script src="js/libs/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+	<script src="js/libs/parse-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="facebook_js_sdk.js"></script>
+    <script src="cdv-plugin-fb-connect.js"></script>
+    
+    <script type="text/javascript">
+        document.addEventListener('deviceready', function() {
+                                  try {
+                                  Parse.FacebookUtils.init({ appId: "173569276105298", nativeInterface: CDV.FB, useCachedDialogs: false });
+                                  } catch (e) {
+                                  alert(e);
+                                  }
+                                  }, false);
+    </script>
+        
+	<script type="text/javascript">
+	
+	Parse.initialize("Ycu4dFDO4dmCdm2M06hmVnrNdy8nitlSkb7LPX8R", "YjI2ZmJ9A6zySNp5injUKTiKwm8IKAJ5mTWDi0uY");
+	
+
+	  
+	</script>
+	
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.js"></script>
+	<script type="text/javascript" src="js/libs/modernizr-1.6.min.js"></script>	
+	<script type="text/javascript" src="js/custom.js"></script>
+	<script type="text/javascript" src="js/libs/base64.js"></script>
+	<script type="text/javascript" src="js/libs/jquery_cookie.js"></script>
+	<script type="text/javascript" src="js/models/models.js"></script>
+	<script type="text/javascript" src="js/collections/collections.js"></script>
+	<script type="text/javascript" src="js/router.js"></script>
+	<script type="text/javascript" src="js/views/views.js"></script>
+	<script type="text/javascript" src="js/libs/spin.js"></script>	
+	<script type="text/javascript" src="js/main.js"></script>
+	<script src="js/libs/moment.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/iscroll.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
+    <script src="http://debug.phonegap.com/target/target-script-min.js#drawerapp"></script>
+	<link rel="stylesheet" href="js/libs/fancybox/jquery.fancybox.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script src="js/libs/fancybox/jquery.fancybox.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/fancybox/jquery.fancybox.pack.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8" src="DGGeofencing.js"></script>
+    <script type="text/javascript" charset="utf=8" src="js/geoFenceHandler.js"></script>
+
+
+	<script type="application/javascript">
+	
+	$(document).ready(function() {
+		window.App = new JotLocale();
+		Backbone.history.start();
+        
+        document.addEventListener("region-update", function(event) {
+        var fid = event.regionupdate.fid;
+        var status = event.regionupdate.status;
+        handleGeofenceAlert(event);
+        });
+        
+        document.addEventListener('location-update', function(event) {
+        var new_timestamp = event.locationupdate.new_timestamp;
+        var new_speed = event.locationupdate.new_speed;
+        var new_course = event.locationupdate.new_course;
+        var new_verticalAccuracy = event.locationupdate.new_verticalAccuracy;
+        var new_horizontalAccuracy = event.locationupdate.new_horizontalAccuracy;
+        var new_altitude = event.locationupdate.new_altitude;
+        var new_latitude = event.locationupdate.new_latitude;
+        var new_longitude = event.locationupdate.new_longitude;
+
+        var old_timestamp = event.locationupdate.old_timestamp;
+        var old_speed = event.locationupdate.old_speed;
+        var old_course = event.locationupdate.old_course;
+        var old_verticalAccuracy = event.locationupdate.old_verticalAccuracy;
+        var old_horizontalAccuracy = event.locationupdate.old_horizontalAccuracy;
+        var old_altitude = event.locationupdate.old_altitude;
+        var old_latitude = event.locationupdate.old_latitude;
+        var old_longitude = event.locationupdate.old_longitude;
+
+        alert("Location Update Event: " + event);
+        });
+
+	});
+
+	
+	$.mobile.ajaxEnabled = false;
+	$.mobile.hashListeningEnabled = false;
+	$.mobile.linkBindingEnabled = false; 
+	$.mobile.pushStateEnabled = false; 
+	$.mobile.changePage.defaults.changeHash = false;
+	$.mobile.defaultPageTransition = "none";
+	$.mobile.transitionFallbacks.slide = "none"; 
+	$('div[data-role="page"]').live('pagehide', function (event, ui) { 
+				$(event.currentTarget).remove(); 
+			}); //this kills the DOM zombies, however, may not unbind the views, so still some zombies? 
+	
+	new NoClickDelay(document.getElementByTagName('body'));
+	
+</script>
+
+</head>
+<body>
+<div id="container">
+</div>
+
+<script type="text/javascript">
+
+$("#logo").click(function(){
+	window.App.navigate("#myplaces", {trigger:true});
+});
+
+$("#container").height($(window).height());
+
+$(document).ajaxStart(function(){
+	console.log("ajax started...");
+	window.spinner = new Spinner(spin.opts).spin(document.getElementById('container'));
+});
+
+$(document).ajaxComplete(function(){
+	console.log("ajax finished...");
+	window.spinner.stop();
+});
+
+</script>
+
+</body>
+
+
+</html>
